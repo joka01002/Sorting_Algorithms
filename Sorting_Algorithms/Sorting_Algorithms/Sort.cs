@@ -8,18 +8,7 @@ namespace Sorting_Algorithms
 {
     class Sort
     {
-        private int number;
-
-        public Sort(int n)
-        {
-            number = n;
-        }
-
-        public int Numberlist
-        {
-            set { number = value; }
-            get { return number; }
-        }
+        
 
         
     }
