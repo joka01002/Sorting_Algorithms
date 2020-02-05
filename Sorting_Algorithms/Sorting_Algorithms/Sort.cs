@@ -49,16 +49,40 @@ namespace Sorting_Algorithms
             return insertionwatch.Elapsed.TotalMilliseconds;
         }
 
-        public double MergeSort(List<int> mergesort)
+        public double InsertionSort2(List<int> insertionsort)
+        {
+            Stopwatch insertionwatch = new Stopwatch();
+            insertionwatch.Start();
+            for (int i = 1; i < insertionsort.Count; i++)
+            {
+                int a = insertionsort[i];
+                int j = i-1;
+                while (j >= 0 && insertionsort[j] > a)
+                {
+                    insertionsort[j+1] = insertionsort[j];
+                    j--;
+                }
+                insertionsort[j+1] = a;
+            }
+            insertionwatch.Stop();
+            return insertionwatch.Elapsed.TotalMilliseconds;
+        }
+
+        public double MergeSortInit(List<int> mergesort)
         {
             Stopwatch mergewatch = new Stopwatch();
             mergewatch.Start();
-            MergeSplit(mergesort);
+            List<int> SortedList = MergeSort(mergesort);
             mergewatch.Stop();
             return mergewatch.Elapsed.TotalMilliseconds;
         }
 
-        private List<int> MergeSplit(List<int> mergesort)
+        public double QuickSort(List<int> quicksort)
+        {
+
+        }
+
+        private List<int> MergeSort(List<int> mergesort)
         {
             List<int> left = new List<int>();
             List<int> right = new List<int>();
@@ -68,19 +92,43 @@ namespace Sorting_Algorithms
                 return mergesort;
             }
             
-            foreach(int i in mergesort)
+            int x = mergesort.Count / 2;
+            left = mergesort.GetRange(0, x);
+            right = mergesort.GetRange(x, mergesort.Count - x);
+
+            left = MergeSort(left);
+            right = MergeSort(right);
+
+            return Merge(left, right);
+        }
+
+        private List<int> Merge(List<int> left, List<int> right)
+        {
+            List<int> result = new List<int>();
+
+            while(left.Count > 0 && right.Count > 0)
             {
-                if (i < mergesort.Count / 2)
+                if (left[0] <= right[0])
                 {
-                    left.Add(mergesort[i]);
+                    result.Add(left[0]);
+                    left = left.GetRange(1, left.Count - 1);
                 }
                 else
                 {
-                    right.Add(mergesort[i]);
+                    result.Add(right[0]);
+                    right = right.GetRange(1, right.Count - 1);
                 }
             }
 
-
+            if (left.Count > 0)
+            {
+                result.AddRange(left);
+            }
+            else
+            {
+                result.AddRange(right);
+            }
+            return result;
         }
     }
 }
