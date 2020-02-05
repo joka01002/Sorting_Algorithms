@@ -60,6 +60,26 @@ namespace Sorting_Algorithms
 
         private List<int> MergeSplit(List<int> mergesort)
         {
+            List<int> left = new List<int>();
+            List<int> right = new List<int>();
+            
+            if (mergesort.Count <= 1)
+            {
+                return mergesort;
+            }
+            
+            foreach(int i in mergesort)
+            {
+                if (i < mergesort.Count / 2)
+                {
+                    left.Add(mergesort[i]);
+                }
+                else
+                {
+                    right.Add(mergesort[i]);
+                }
+            }
+
 
         }
     }
