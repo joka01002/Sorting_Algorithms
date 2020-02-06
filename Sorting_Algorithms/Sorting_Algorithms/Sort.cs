@@ -10,91 +10,103 @@ namespace Sorting_Algorithms
 {
     public class Sort
     {
-        public double BubbleSort(List<int> bubblesort)
+        public double BubbleSort(List<int> bubbleSort)
         {
-            Stopwatch bubblewatch = new Stopwatch();
-            bubblewatch.Start();
-            for (int i = 0; i < bubblesort.Count - 1; i++)
+            Stopwatch bubbleWatch = new Stopwatch();
+            bubbleWatch.Start();
+            for (int i = 0; i < bubbleSort.Count - 1; i++)
             {
-                for (int j = 0; j < bubblesort.Count - 1; j++)
+                for (int j = 0; j < bubbleSort.Count - 1; j++)
                 {
-                    if (bubblesort[j] > bubblesort[j + 1])
+                    if (bubbleSort[j] > bubbleSort[j + 1])
                     {
-                        int a = bubblesort[j];
-                        bubblesort[j] = bubblesort[j + 1];
-                        bubblesort[j + 1] = a;
+                        int a = bubbleSort[j];
+                        bubbleSort[j] = bubbleSort[j + 1];
+                        bubbleSort[j + 1] = a;
                     }
                 }
             }
-            bubblewatch.Stop();
-            return bubblewatch.Elapsed.TotalMilliseconds;
+            bubbleWatch.Stop();
+            return bubbleWatch.Elapsed.TotalMilliseconds;
         }
 
-        public double InsertionSort(List<int> insertionsort)
+        public double InsertionSort(List<int> insertionSort)
         {
-            Stopwatch insertionwatch = new Stopwatch();
-            insertionwatch.Start();
-            for (int i = 1; i < insertionsort.Count; i++)
+            Stopwatch insertionWatch = new Stopwatch();
+            insertionWatch.Start();
+            for (int i = 1; i < insertionSort.Count; i++)
             {
                 int j = i;
-                while (j > 0 && insertionsort[j-1] > insertionsort[j])
+                while (j > 0 && insertionSort[j-1] > insertionSort[j])
                 {
-                    int a = insertionsort[j-1];
-                    insertionsort[j-1] = insertionsort[j];
-                    insertionsort[j] = a;
+                    int a = insertionSort[j-1];
+                    insertionSort[j-1] = insertionSort[j];
+                    insertionSort[j] = a;
                     j--;
                 }
             }
-            insertionwatch.Stop();
-            return insertionwatch.Elapsed.TotalMilliseconds;
+            insertionWatch.Stop();
+            return insertionWatch.Elapsed.TotalMilliseconds;
         }
 
-        public double InsertionSort2(List<int> insertionsort)
+        public double InsertionSort2(List<int> insertionSort)
         {
-            Stopwatch insertionwatch = new Stopwatch();
-            insertionwatch.Start();
-            for (int i = 1; i < insertionsort.Count; i++)
+            Stopwatch insertionWatch = new Stopwatch();
+            insertionWatch.Start();
+            for (int i = 1; i < insertionSort.Count; i++)
             {
-                int a = insertionsort[i];
+                int a = insertionSort[i];
                 int j = i-1;
-                while (j >= 0 && insertionsort[j] > a)
+                while (j >= 0 && insertionSort[j] > a)
                 {
-                    insertionsort[j+1] = insertionsort[j];
+                    insertionSort[j+1] = insertionSort[j];
                     j--;
                 }
-                insertionsort[j+1] = a;
+                insertionSort[j+1] = a;
             }
-            insertionwatch.Stop();
-            return insertionwatch.Elapsed.TotalMilliseconds;
+            insertionWatch.Stop();
+            return insertionWatch.Elapsed.TotalMilliseconds;
         }
 
-        public double MergeSortInit(List<int> mergesort)
+        public double MergeSortInit(List<int> mergeSort)
         {
-            Stopwatch mergewatch = new Stopwatch();
-            mergewatch.Start();
-            List<int> SortedList = MergeSort(mergesort);
-            mergewatch.Stop();
-            return mergewatch.Elapsed.TotalMilliseconds;
+            Stopwatch mergeWatch = new Stopwatch();
+            mergeWatch.Start();
+            List<int> SortedList = MergeSort(mergeSort);
+            mergeWatch.Stop();
+            return mergeWatch.Elapsed.TotalMilliseconds;
         }
 
-        public double QuickSort(List<int> quicksort)
+        public double QuickSort(List<int> quickSort)
         {
-
+            Stopwatch quickWatch = new Stopwatch();
+            quickWatch.Start();
+            quickWatch.Stop();
+            return quickWatch.Elapsed.TotalMilliseconds;
         }
 
-        private List<int> MergeSort(List<int> mergesort)
+        public double ListSort(List<int> listSort)
+        {
+            Stopwatch listWatch = new Stopwatch();
+            listWatch.Start();
+            listSort.Sort();
+            listWatch.Stop();
+            return listWatch.Elapsed.TotalMilliseconds;
+        }
+
+        private List<int> MergeSort(List<int> mergeSort)
         {
             List<int> left = new List<int>();
             List<int> right = new List<int>();
             
-            if (mergesort.Count <= 1)
+            if (mergeSort.Count <= 1)
             {
-                return mergesort;
+                return mergeSort;
             }
             
-            int x = mergesort.Count / 2;
-            left = mergesort.GetRange(0, x);
-            right = mergesort.GetRange(x, mergesort.Count - x);
+            int x = mergeSort.Count / 2;
+            left = mergeSort.GetRange(0, x);
+            right = mergeSort.GetRange(x, mergeSort.Count - x);
 
             left = MergeSort(left);
             right = MergeSort(right);

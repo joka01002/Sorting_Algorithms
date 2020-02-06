@@ -13,32 +13,37 @@ namespace Sorting_Algorithms
         static void Main(string[] args)
         {
             Sort sort = new Sort();
-            List<int> numberlist = new List<int>();
+            List<int> numberList = new List<int>();
             Random number = new Random();
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 10; i++)
             {
                 int num = number.Next(1, 1000001);
-                numberlist.Add(num);
+                numberList.Add(num);
             }
-            List<int> bubblesort = new List<int>(numberlist);
-            List<int> insertionsort = new List<int>(numberlist);
-            List<int> insertionsort2 = new List<int>(numberlist);
-            List<int> mergesort = new List<int>(numberlist);
-            List<int> quicksort = new List<int>(numberlist);
+            List<int> bubbleSort = new List<int>(numberList);
+            List<int> insertionSort = new List<int>(numberList);
+            List<int> insertionSort2 = new List<int>(numberList);
+            List<int> mergeSort = new List<int>(numberList);
+            List<int> quickSort = new List<int>(numberList);
+            List<int> listSort = new List<int>(numberList);
 
-            double bubbletime = sort.BubbleSort(bubblesort);
-            Console.WriteLine("Bubblesort time: " + bubbletime + " milliseconds");
+            double bubbleTime = sort.BubbleSort(bubbleSort);
+            Console.WriteLine("Bubblesort time: " + bubbleTime + " milliseconds");
 
-            double insertiontime = sort.InsertionSort(insertionsort);
-            Console.WriteLine("Insertionsort time: " + insertiontime + " milliseconds");
+            double insertionTime = sort.InsertionSort(insertionSort);
+            Console.WriteLine("Insertionsort time: " + insertionTime + " milliseconds");
 
-            double insertiontime2 = sort.InsertionSort2(insertionsort2);
-            Console.WriteLine("Second Insertionsort time: " + insertiontime2 + " milliseconds");
+            double insertionTime2 = sort.InsertionSort2(insertionSort2);
+            Console.WriteLine("Second Insertionsort time: " + insertionTime2 + " milliseconds");
 
-            double mergetime = sort.MergeSortInit(mergesort);
-            Console.WriteLine("Mergesort time: " + mergetime + " milliseconds");
+            double mergeTime = sort.MergeSortInit(mergeSort);
+            Console.WriteLine("Mergesort time: " + mergeTime + " milliseconds");
 
+            //double quickTime = sort.QuickSort(quickSort);
+            //Console.WriteLine("Quicksort time: " + quickTime + " milliseconds");
 
+            double listTime = sort.ListSort(listSort);
+            Console.WriteLine("C# listsort time: " + listTime + " milliseconds");
 
             Console.ReadLine();
         }
