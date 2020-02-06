@@ -77,23 +77,6 @@ namespace Sorting_Algorithms
             return mergeWatch.Elapsed.TotalMilliseconds;
         }
 
-        public double QuickSort(List<int> quickSort)
-        {
-            Stopwatch quickWatch = new Stopwatch();
-            quickWatch.Start();
-            quickWatch.Stop();
-            return quickWatch.Elapsed.TotalMilliseconds;
-        }
-
-        public double ListSort(List<int> listSort)
-        {
-            Stopwatch listWatch = new Stopwatch();
-            listWatch.Start();
-            listSort.Sort();
-            listWatch.Stop();
-            return listWatch.Elapsed.TotalMilliseconds;
-        }
-
         private List<int> MergeSort(List<int> mergeSort)
         {
             List<int> left = new List<int>();
@@ -141,6 +124,90 @@ namespace Sorting_Algorithms
                 result.AddRange(right);
             }
             return result;
+        }
+
+        public double QuickSort(List<int> quickSort, bool runLomuto)
+        {
+            Stopwatch quickWatch = new Stopwatch();
+            quickWatch.Start();
+            Quick(quickSort, 0, quickSort.Count - 1, runLomuto);
+            quickWatch.Stop();
+            return quickWatch.Elapsed.TotalMilliseconds;
+        }
+
+        private void Quick(List<int> quickSort, int low, int high, bool runLomuto)
+        {
+            if (low < high)
+            {
+                int p;
+                if (runLomuto)
+                {
+                    p = LomutoPartition(quickSort, low, high);
+                    Quick(quickSort, low, p-1, runLomuto);
+                }
+                else
+                {
+                    p = HoarePartition(quickSort, low, high);
+                    Quick(quickSort, low, p, runLomuto);
+                }
+                Quick(quickSort, p+1, high, runLomuto);
+            }
+        }
+
+        private int LomutoPartition(List<int> quickSort, int low, int high)
+        {
+            int pivot = quickSort[high];
+            int i = low;
+            for(int j=low; j < high; j++)
+            {
+                if (quickSort[j] < pivot)
+                {
+                    int a = quickSort[i];
+                    quickSort[i] = quickSort[j];
+                    quickSort[j] = a;
+                    i++;
+                }
+            }
+            int b = quickSort[i];
+            quickSort[i] = quickSort[high];
+            quickSort[high] = b;
+            return i;
+        }
+
+        private int HoarePartition(List<int> quickSort, int low, int high)
+        {
+            int pivot = quickSort[(high + low) / 2];
+            int i = low - 1;
+            int j = high + 1;
+            while(true)
+            {
+                do
+                {
+                    i++;
+                } while(quickSort[i] < pivot);
+
+                do
+                {
+                    j--;
+                } while(quickSort[j] > pivot);
+
+                if(i >= j)
+                {
+                    return j;
+                }
+                int a = quickSort[i];
+                quickSort[i] = quickSort[j];
+                quickSort[j] = a;
+            }
+        }
+
+        public double ListSort(List<int> listSort)
+        {
+            Stopwatch listWatch = new Stopwatch();
+            listWatch.Start();
+            listSort.Sort();
+            listWatch.Stop();
+            return listWatch.Elapsed.TotalMilliseconds;
         }
     }
 }
