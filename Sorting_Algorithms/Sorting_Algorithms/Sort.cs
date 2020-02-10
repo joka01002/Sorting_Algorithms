@@ -36,25 +36,6 @@ namespace Sorting_Algorithms
             insertionWatch.Start();
             for (int i = 1; i < insertionSort.Count; i++)
             {
-                int j = i;
-                while (j > 0 && insertionSort[j-1] > insertionSort[j])
-                {
-                    int a = insertionSort[j-1];
-                    insertionSort[j-1] = insertionSort[j];
-                    insertionSort[j] = a;
-                    j--;
-                }
-            }
-            insertionWatch.Stop();
-            return insertionWatch.Elapsed.TotalMilliseconds;
-        }
-
-        public double InsertionSort2(List<int> insertionSort)
-        {
-            Stopwatch insertionWatch = new Stopwatch();
-            insertionWatch.Start();
-            for (int i = 1; i < insertionSort.Count; i++)
-            {
                 int a = insertionSort[i];
                 int j = i-1;
                 while (j >= 0 && insertionSort[j] > a)
