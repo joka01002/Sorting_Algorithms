@@ -139,7 +139,7 @@ namespace Sorting_Algorithms
         {
             int pivot = quickSort[high];
             int i = low;
-            for(int j=low; j < high; j++)
+            for(int j = low; j < high; j++)
             {
                 if (quickSort[j] < pivot)
                 {
@@ -182,13 +182,13 @@ namespace Sorting_Algorithms
             }
         }
 
-        public double ListSort(List<int> listSort)
+        public double LinqSort(List<int> linqSort)
         {
-            Stopwatch listWatch = new Stopwatch();
-            listWatch.Start();
-            listSort.Sort();
-            listWatch.Stop();
-            return listWatch.Elapsed.TotalMilliseconds;
+            Stopwatch linqWatch = new Stopwatch();
+            linqWatch.Start();
+            linqSort.Sort();
+            linqWatch.Stop();
+            return linqWatch.Elapsed.TotalMilliseconds;
         }
     }
 }

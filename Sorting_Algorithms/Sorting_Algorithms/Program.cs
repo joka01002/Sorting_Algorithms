@@ -15,7 +15,7 @@ namespace Sorting_Algorithms
             Sort sort = new Sort();
             List<int> numberList = new List<int>();
             Random number = new Random();
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 10; i++)
             {
                 int num = number.Next(1, 1000001);
                 numberList.Add(num);
@@ -25,7 +25,7 @@ namespace Sorting_Algorithms
             List<int> mergeSort = new List<int>(numberList);
             List<int> quickSortL = new List<int>(numberList);
             List<int> quickSortH = new List<int>(numberList);
-            List<int> listSort = new List<int>(numberList);
+            List<int> linqSort = new List<int>(numberList);
 
             double bubbleTime = sort.BubbleSort(bubbleSort);
             Console.WriteLine("Bubblesort time: " + bubbleTime + " milliseconds");
@@ -42,7 +42,7 @@ namespace Sorting_Algorithms
             double quickTimeH = sort.QuickSort(quickSortH, false);
             Console.WriteLine("Quicksort Hoare time: " + quickTimeH + " milliseconds");
 
-            double listTime = sort.ListSort(listSort);
+            double listTime = sort.LinqSort(linqSort);
             Console.WriteLine("C# listsort time: " + listTime + " milliseconds");
 
             Console.ReadLine();
